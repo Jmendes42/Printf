@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/05/28 01:41:02 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/14 16:19:50 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	printu(p_lista *d_st, unsigned int d)
 	if (d_st->str[0] == '0' && d_st->str[1] == '2')
 		d_st->str[0] = '\0';
 	len = ft_strlen(d_st->str);
-	if (d == 0 && d_st->precision == 0)
+	if (d == 0 && d_st->precision == 0 )
 	{
 		if (d_st->width == 1)
 			d_st->c += ft_putchar_fd(' ');

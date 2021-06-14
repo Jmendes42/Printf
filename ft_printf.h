@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:06:01 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/05 22:02:20 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/11 18:09:11 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 		int zero;
 		char *str;
 		int type;
+		int p;
+		int backPrint;
 	} p_lista;
 
 
@@ -44,12 +46,13 @@ void	width(int dst, int x, p_lista *d_st);
 void        convert(unsigned long long n, int base, p_lista *d_st);
 void    printx(p_lista *d_st, unsigned long long i);
 void    printxx(p_lista *d_st, unsigned long long i);
+void    printxx(p_lista *d_st, unsigned long long i);
 void    printu(p_lista *d_st, unsigned int d);
 char    *ft_strdup(const char *s);
 void    precision(int dst, int *d, int index, p_lista *d_st);
 void    precision_unsigned(int precision, int len, p_lista *d_st);
 void	printd1(p_lista *d_st, int d, int num, int index);
-void	tolower1(char *s);
+void	tolower1(char *s, p_lista *d_st);
 /*void		ft_print_c(p_lista *d_st, char c);
 void		ft_print_s(p_lista *d_st, char *s);
 int	ft_type(const char *fmt, int index, p_lista *d_st,va_list vars);

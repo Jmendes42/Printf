@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:02 by jmendes           #+#    #+#             */
-/*   Updated: 2021/05/21 12:57:55 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/14 15:45:10 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 static void	width_precision(p_lista *d_st, int *d, int index)
 {
+	if (*d != -1 && d_st->align == 1)
+	{
+		d_st->precision++;
+	}
 	d_st->width = d_st->width - d_st->precision;
 	if (d_st->align == 1)
 	{
@@ -44,7 +48,9 @@ static void	width_precision(p_lista *d_st, int *d, int index)
 static void	width1(p_lista *d_st, int *d, int index)
 {
 	if (d_st->precision >= index && d_st->width > d_st->precision)
+	{
 		width_precision(d_st, d, index);
+	}
 	else
 	{	
 		if (d_st->align > 0)
@@ -97,11 +103,15 @@ void	printd0(p_lista *d_st, int d, int num, int index)
 		d_st->align++;
 	}
 	else if (d_st->precision >= 0 && d_st->zero > d_st->precision)
+	{
 		pre_zero(d_st, &d, index);
+	}
 	else if (d_st->precision > index && d_st->precision >= d_st->width)
 		precision(d_st->precision, &d, index - 1, d_st);
 	else if (d_st->width > index && d_st->width > d_st->precision)
+	{
 		width1(d_st, &d, index);
+	}
 	else if (d_st->zero > index && d_st->align == 0 && d_st->precision == -1)
 		precision(d_st->zero, &d, index, d_st);
 	if (d_st->align != 2)

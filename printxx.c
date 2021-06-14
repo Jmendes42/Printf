@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printx.c                                           :+:      :+:    :+:   */
+/*   printu.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/14 16:58:33 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/09 12:55:43 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,14 @@ static void	zero_u(unsigned long long d, p_lista *d_st, int len)
 		zero_pre(d_st, len);
 }
 
-void	printx(p_lista *d_st, unsigned long long d)
+void	printxx(p_lista *d_st, unsigned long long d)
 {
 	int	len;
-
 	convert(d, 16, d_st);
-	tolower1(d_st->str, d_st);
 	if (d_st->str[0] == '0' && d_st->str[1] == '2')
 		d_st->str[0] = '\0';
 	len = ft_strlen(d_st->str);
-	 (d == 0 && d_st->precision == 0)
+	if (d == 0 && d_st->precision == 0)
 	{
 		if (d_st->width == 1)
 			d_st->c += ft_putchar_fd(' ');
@@ -108,13 +106,9 @@ void	printx(p_lista *d_st, unsigned long long d)
 	}
 	if (d_st->precision >= 0 && d_st->zero > d_st->precision
 		&& d_st->zero > len)
-		{
 		zero_u(d, d_st, len);
-		}
 	else if (d_st->precision > len && d_st->precision >= d_st->width)
-	{
 		precision_unsigned(d_st->precision, len, d_st);
-	}
 	else if (d_st->width > len && d_st->width > d_st->precision)
 		width1(d_st, len);
 	else if (d_st->zero > len && d_st->align == 0 && d_st->precision == -1)
