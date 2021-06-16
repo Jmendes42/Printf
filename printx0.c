@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   printx0.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 17:39:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/05/07 16:41:05 by jmendes          ###   ########.fr       */
+/*   Created: 2021/06/15 15:41:11 by jmendes           #+#    #+#             */
+/*   Updated: 2021/06/16 15:37:36 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strdup(const char *s)
+void	printx0(p_lista *d_st, int len)
 {
-	char			*str;
-	unsigned int	index;
-
-	index = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (str == NULL)
-		return (NULL);
-	while (index < ft_strlen(s))
+	if (d_st->precision == 0)
 	{
-		str[index] = s[index];
-		index++;
+		if (d_st->width == 1)
+			d_st->c += ft_putchar_fd(' ');
+		d_st->str[0] = '\0';
+		if (d_st->width > d_st->precision)
+		{
+			width(d_st->width, len, d_st);
+			if (d_st->width > 2)
+				len++;
+		}
+		else if (d_st->align == 0)
+			d_st->zero++;
 	}
-	str[index] = '\0';
-	return (str);
+	else if (d_st->precision > 0)
+		precision_unsigned(d_st->precision, len, d_st);
+	else
+		d_st->c += ft_putchar_fd('0');
 }

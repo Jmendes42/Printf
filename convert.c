@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:45:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/10 11:17:57 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/15 15:40:48 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,39 +92,3 @@ void precision_unsigned(int precision, int len, p_lista *d_st)
 		len++;
 	}
 }
-
-/*void	printx(p_lista *d_st, unsigned long long i)
-{
-	int len;
-
-	if (d_st->precision == 0)
-		return ;
-	convert(i, 16, d_st);
-//	ft_putstr_fd(d_st->str);
-	len = ft_strlen(d_st->str);
-//	ft_putnbr_fd(len);
-	if (d_st->align == 0)
-	{
-		if (d_st->precision > len)
-			precision_unsigned(d_st->precision, len - 1, d_st);
-		if (d_st->precision >= d_st->width)
-			return ;
-		if (d_st->width > len)
-			width(d_st->width, len, d_st);
-		tolower1(d_st->str);
-	}
-	else
-	{
-//	ft_putnbr_fd(len);
-		tolower1(d_st->str);
-		if (d_st->precision > len)
-		{
-			precision_unsigned(d_st->precision, len, d_st);
-			len++;
-		}
-		if (d_st->precision >= d_st->width)
-			return ;
-		if (d_st->width > len)
-			width(d_st->width, len, d_st);
-	}
-}*/

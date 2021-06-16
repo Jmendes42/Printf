@@ -6,7 +6,7 @@
 #    By: jmendes <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 16:37:43 by jmendes           #+#    #+#              #
-#    Updated: 2021/06/09 12:56:01 by jmendes          ###   ########.fr        #
+#    Updated: 2021/06/16 16:15:15 by jmendes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,16 @@ NAME = libftprintf.a
 INCLUDE = ft_printf.h 
 
 SRC = flags.c\
+	  		width_precision.c\
 			ft_printf.c\
-			ft_strdup.c\
 			printers.c\
-			printd.c\
-			printd0.c\
-			printd1.c\
+			printd_pos.c\
+			printd_zero.c\
+			printd_neg.c\
 			printc.c\
 			printu.c\
 			printx.c\
+			printx0.c\
 			printxx.c\
 			convert.c\
 			

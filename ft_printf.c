@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/14 16:17:42 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/16 17:17:43 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	type(p_lista *d_st, va_list vars, const char **fmt)
 	else if (**fmt == 'c')
 		printc(d_st, va_arg(vars, int));
 	else if (**fmt == 'd' || **fmt == 'i')
-		printd(d_st, va_arg(vars, int));
+		pre_printd(d_st, va_arg(vars, int));
 	else if (**fmt == '%')
 		printc(d_st, '%');
 	else
@@ -98,17 +98,16 @@ int ft_printf(const char *fmt, ...)
 	return (d_st.c);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int e;
-	e = ft_printf("%5.0x\n", 0);
+	e = ft_printf("%9.2d\n", UINT_MAX);
 //	e = ft_printf("%11.10i\n", UINT_MAX);
 //		ft_printf("-00216 i  \n");
 //	  ft_printf("0000%%\n");
 	  ft_printf("Numero de chars impressos = %d\n", e);
-	  ft_printf("Numero de chars impressos = %d\n", 6);
 	return (0);
-}
+}*/
 //print1.c width_precision -> verificar incrementos
 
 

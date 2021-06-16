@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:06:01 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/11 18:09:11 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/16 16:20:17 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,18 @@
 	} p_lista;
 
 
+
+//precision_width
+void	width(int dst, int x, p_lista *d_st);
+void    precision(int dst, int index, p_lista *d_st);
+void    precision_unsigned(int precision, int len, p_lista *d_st);
+
+
 int		ft_printf(const char *fmt, ...);
 int	ft_putchar_fd(char c);
-void	printd(p_lista *d_st, int d);
-void	printd0(p_lista *d_st, int d, int num, int index);
+void	pre_printd(p_lista *d_st, int d);
+void	printd_neg(p_lista *d_st, int d, int num, int index);
+void	printd_pos(p_lista *d_st, int d, int num, int index);
 void    ft_putnbr_fd(int n);
 int	ft_putstr_fd(char *s);
 size_t	ft_strlen(const char *s);
@@ -42,16 +50,13 @@ void		flags(p_lista *d_st, const char **fmt, va_list vars);
 void	printc(p_lista *d_st, char c);
 void	prints(p_lista *d_st, char *c);
 void	printp(p_lista *d_st, unsigned long long n);
-void	width(int dst, int x, p_lista *d_st);
 void        convert(unsigned long long n, int base, p_lista *d_st);
 void    printx(p_lista *d_st, unsigned long long i);
-void    printxx(p_lista *d_st, unsigned long long i);
+void    printx0(p_lista *d_st, int len);
+void    printx1(p_lista *d_st, int len);
 void    printxx(p_lista *d_st, unsigned long long i);
 void    printu(p_lista *d_st, unsigned int d);
 char    *ft_strdup(const char *s);
-void    precision(int dst, int *d, int index, p_lista *d_st);
-void    precision_unsigned(int precision, int len, p_lista *d_st);
-void	printd1(p_lista *d_st, int d, int num, int index);
 void	tolower1(char *s, p_lista *d_st);
 /*void		ft_print_c(p_lista *d_st, char c);
 void		ft_print_s(p_lista *d_st, char *s);
