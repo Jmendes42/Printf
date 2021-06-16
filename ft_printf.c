@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/16 17:17:43 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/16 21:00:03 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	backPrint(const char *fmt, p_lista *d_st)
 static void	type(p_lista *d_st, va_list vars, const char **fmt)
 {
 	if (**fmt == 'u')
-		printu(d_st, va_arg(vars, unsigned int));
+		printu(d_st, va_arg(vars, unsigned int), 10, 0);
 	else if (**fmt == 'X')
-		printxx(d_st, va_arg(vars, unsigned long long));
+		printu(d_st, va_arg(vars, unsigned long long), 16, 0);
 	else if (**fmt == 'x')
-		printx(d_st, va_arg(vars, unsigned long long));
+		printu(d_st, va_arg(vars, unsigned long long), 16, 1);
 	else if (**fmt == 'p')
 		printp(d_st, va_arg(vars, unsigned long long));
 	else if (**fmt == 's')
@@ -101,7 +101,7 @@ int ft_printf(const char *fmt, ...)
 /*int	main(void)
 {
 	int e;
-	e = ft_printf("%9.2d\n", UINT_MAX);
+	e = ft_printf(" --0*%0*.0x*0 0*%0*.10x*0--\n", -21, LONG_MAX, 21, LONG_MIN);
 //	e = ft_printf("%11.10i\n", UINT_MAX);
 //		ft_printf("-00216 i  \n");
 //	  ft_printf("0000%%\n");

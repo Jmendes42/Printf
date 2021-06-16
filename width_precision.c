@@ -6,14 +6,16 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:58:12 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/16 16:45:31 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/16 20:53:52 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    precision(int dst, int len, p_lista *d_st)
+void    precision(int dst, int len, p_lista *d_st, int control)
 {
+	if (control == 1)
+		ft_putchar_fd('-');
 	if (d_st->precision == len)
 		return ;
 	while (dst > len)

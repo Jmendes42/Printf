@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:06:01 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/16 16:20:17 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/16 20:56:56 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 //precision_width
 void	width(int dst, int x, p_lista *d_st);
-void    precision(int dst, int index, p_lista *d_st);
+void    precision(int dst, int index, p_lista *d_st, int control);
 void    precision_unsigned(int precision, int len, p_lista *d_st);
 
 
@@ -51,11 +51,11 @@ void	printc(p_lista *d_st, char c);
 void	prints(p_lista *d_st, char *c);
 void	printp(p_lista *d_st, unsigned long long n);
 void        convert(unsigned long long n, int base, p_lista *d_st);
-void    printx(p_lista *d_st, unsigned long long i);
+void    printx(p_lista *d_st, unsigned long long i, int base, int lower);
 void    printx0(p_lista *d_st, int len);
 void    printx1(p_lista *d_st, int len);
 void    printxx(p_lista *d_st, unsigned long long i);
-void    printu(p_lista *d_st, unsigned int d);
+void    printu(p_lista *d_st, unsigned int d, int base, int lower);
 char    *ft_strdup(const char *s);
 void	tolower1(char *s, p_lista *d_st);
 /*void		ft_print_c(p_lista *d_st, char c);

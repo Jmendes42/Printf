@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:41:29 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/16 16:29:08 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/16 20:22:16 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	zero_pre(p_lista *d_st)
 		if (d_st->align == 0)
 		{
 			width (d_st->width, d_st->precision, d_st);
-			precision(d_st->precision, 0, d_st);
+			precision(d_st->precision, 0, d_st, 0);
 		}
 		else
 		{
-			precision(d_st->precision, 0, d_st);
+			precision(d_st->precision, 0, d_st, 0);
 			width (d_st->width, d_st->precision, d_st);
 		}
 	}
@@ -33,7 +33,7 @@ static void	zero_pre1(p_lista *d_st)
 {
 	if (d_st->align == 0)
 	{
-		precision(d_st->zero, 1, d_st);
+		precision(d_st->zero, 1, d_st, 0);
 		width(d_st->width, 1, d_st);
 		d_st->c += ft_putchar_fd('0');
 	}
@@ -49,7 +49,7 @@ static void	printd_zero(p_lista *d_st)
 	if (d_st->precision > 0 && d_st->zero > d_st->precision)
 	{
 		width (d_st->zero, d_st->precision, d_st);
-		precision(d_st->precision, 0, d_st);
+		precision(d_st->precision, 0, d_st, 0);
 	}
 	else if (d_st->precision == 0 && d_st->width > 0)
 		width (d_st->width, d_st->precision, d_st);

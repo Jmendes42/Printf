@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/14 16:19:50 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/16 20:55:18 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,13 @@ void	zero_u(unsigned int d, p_lista *d_st, int len)
 		zero_pre(d_st, len);
 }
 
-void	printu(p_lista *d_st, unsigned int d)
+void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 {
 	int	len;
 
-	convert(d, 10, d_st);
+	convert(d, base, d_st);
+	if (lower == 1)
+		tolower1(d_st->str, d_st);
 	if (d_st->str[0] == '0' && d_st->str[1] == '2')
 		d_st->str[0] = '\0';
 	len = ft_strlen(d_st->str);
