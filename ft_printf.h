@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:06:01 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/16 20:56:56 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/20 18:11:22 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 		int precision;
 		int zero;
 		char *str;
+		char *temp;
 		int type;
 		int p;
 		int backPrint;

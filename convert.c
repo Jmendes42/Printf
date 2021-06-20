@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:45:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/15 15:40:48 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/20 19:07:38 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void		convert(unsigned long long n, int base, p_lista *d_st)
 	unsigned long long	nr;
 	int			index;
 	index = counter(n, base);
-	d_st->str = (char *)malloc(sizeof(char) * (index + 1));
-	d_st->str[index--] = '\0';
+	d_st->temp = (char *)malloc(sizeof(char) * (index + 1));
+	d_st->temp[index--] = '\0';
+	d_st->str = d_st->temp;
+	free (d_st->temp);
 	nr = n;
 	if (n == 0)
 		d_st->str[0] = '0';
@@ -66,6 +68,8 @@ void    printp(p_lista *d_st, unsigned long long n)
 {
 	d_st->p += 1;
 	convert(n, 16, d_st);
+	if (!n && d_st->precision == 0) 
+		d_st->str[0] = '\0';
 	if (d_st->align > 0)
 	{
 		d_st->c += write(1, "0x", 2);
@@ -81,7 +85,6 @@ void    printp(p_lista *d_st, unsigned long long n)
 		d_st->c += write(1, "0x", 2);
 		tolower1(d_st->str, d_st);
 	}
-	free (d_st->str);
 }
 
 void precision_unsigned(int precision, int len, p_lista *d_st)

@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/16 20:55:18 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/20 18:55:46 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ void	zero_u(unsigned int d, p_lista *d_st, int len)
 void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 {
 	int	len;
+	int	control;
 
+	control = 0;
 	convert(d, base, d_st);
 	if (lower == 1)
 		tolower1(d_st->str, d_st);
@@ -95,10 +97,10 @@ void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 	len = ft_strlen(d_st->str);
 	if (d == 0 && d_st->precision == 0 )
 	{
-		if (d_st->width == 1)
-			d_st->c += ft_putchar_fd(' ');
 		d_st->str[0] = '\0';
-		if (d_st->width > d_st->precision)
+		if (d_st->width > d_st->precision && d_st->precision == 0)
+			width(d_st->width + 1, len, d_st);
+		else if (d_st->width > d_st->precision)
 		{
 			width(d_st->width, len, d_st);
 			if (d_st->width > 2)
@@ -106,17 +108,17 @@ void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 		}
 		else if (d_st->align == 0)
 			d_st->zero++;
+		control += 1;
 	}
 	if (d_st->precision >= 0 && d_st->zero > d_st->precision
 		&& d_st->zero > len)
 		zero_u(d, d_st, len);
 	else if (d_st->precision > len && d_st->precision >= d_st->width)
 		precision_unsigned(d_st->precision, len, d_st);
-	else if (d_st->width > len && d_st->width > d_st->precision)
+	else if (d_st->width > len && d_st->width > d_st->precision && control == 0)
 		width1(d_st, len);
 	else if (d_st->zero > len && d_st->align == 0 && d_st->precision == -1)
 		precision_unsigned(d_st->zero, len, d_st);
 	if (d_st->align < 2)
 		 d_st->c += ft_putstr_fd(d_st->str);
-	free (d_st->str);
 }

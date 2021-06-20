@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/16 21:00:03 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/20 19:07:48 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void init_struct(p_lista *d_st)
 	d_st->precision = -1;
 	d_st->zero = 0;
 	d_st->str = NULL;
+	d_st->temp = NULL;
 	d_st->type = 0;
 	d_st->p = 0;
 	d_st->backPrint = 0;
@@ -101,7 +102,8 @@ int ft_printf(const char *fmt, ...)
 /*int	main(void)
 {
 	int e;
-	e = ft_printf(" --0*%0*.0x*0 0*%0*.10x*0--\n", -21, LONG_MAX, 21, LONG_MIN);
+//	e = ft_printf("0*%0*.10x*0--\n", 21, LONG_MIN);
+	e = ft_printf("%.p\n", NULL);
 //	e = ft_printf("%11.10i\n", UINT_MAX);
 //		ft_printf("-00216 i  \n");
 //	  ft_printf("0000%%\n");
