@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/20 19:07:48 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/20 19:52:03 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,10 @@ int ft_printf(const char *fmt, ...)
 {
 	int e;
 //	e = ft_printf("0*%0*.10x*0--\n", 21, LONG_MIN);
-	e = ft_printf("%.p\n", NULL);
-//	e = ft_printf("%11.10i\n", UINT_MAX);
+	e = ft_printf("%09s\n", "hi low");
 //		ft_printf("-00216 i  \n");
 //	  ft_printf("0000%%\n");
-	  ft_printf("Numero de chars impressos = %d\n", e);
+//	  ft_printf("Numero de chars impressos = %d\n", e);
 	return (0);
 }*/
 //print1.c width_precision -> verificar incrementos

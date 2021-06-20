@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:35:37 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/09 18:03:53 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/20 19:57:46 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void flags(p_lista *d_st, const char **fmt, va_list vars)
 	if ((char)**fmt == '0')
 	{
 		(*fmt)++;
-//		ft_putchar_fd('X');
 		while ((char)**fmt >= '0' && (char)**fmt <= '9')
 		{
 			d_st->zero = (d_st->zero * 10) + (char)**fmt - '0';

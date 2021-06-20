@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:45:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/20 19:07:38 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/20 19:34:05 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,21 @@ void tolower1(char *s, p_lista *d_st)
 
 void    printp(p_lista *d_st, unsigned long long n)
 {
+	int control;
+
+	control = 0;
 	d_st->p += 1;
 	convert(n, 16, d_st);
 	if (!n && d_st->precision == 0) 
 		d_st->str[0] = '\0';
-	if (d_st->align > 0)
+	if (d_st->precision > 0 && d_st->width < d_st->precision)
+	{
+		d_st->c += write(1, "0x", 2);
+		precision(d_st->precision, ft_strlen(d_st->str), d_st, 0);
+		tolower1(d_st->str, d_st);
+		control += 1;
+	}
+	if (d_st->align > 0 && control == 0)
 	{
 		d_st->c += write(1, "0x", 2);
 		tolower1(d_st->str, d_st);
@@ -78,7 +88,7 @@ void    printp(p_lista *d_st, unsigned long long n)
 			width(d_st->width, ft_strlen(d_st->str) + 2, d_st);
 		
 	}
-	else
+	else if (d_st->align == 0 && control == 0)
 	{
 		if ((size_t)d_st->width > ft_strlen(d_st->str))
 			width(d_st->width, ft_strlen(d_st->str) + 2, d_st);
