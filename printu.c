@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/20 19:21:10 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/21 19:11:50 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 {
 	int	len;
 	int	control;
+	char *str;
 
 	control = 0;
 	convert(d, base, d_st);

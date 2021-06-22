@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/20 19:52:03 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/21 19:27:01 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	type(p_lista *d_st, va_list vars, const char **fmt)
 	if (**fmt == 'u')
 		printu(d_st, va_arg(vars, unsigned int), 10, 0);
 	else if (**fmt == 'X')
-		printu(d_st, va_arg(vars, unsigned long long), 16, 0);
+		printu(d_st, va_arg(vars, unsigned int), 16, 0);
 	else if (**fmt == 'x')
-		printu(d_st, va_arg(vars, unsigned long long), 16, 1);
+		printu(d_st, va_arg(vars, unsigned int), 16, 1);
 	else if (**fmt == 'p')
 		printp(d_st, va_arg(vars, unsigned long long));
 	else if (**fmt == 's')
@@ -53,8 +53,6 @@ static void init_struct(p_lista *d_st)
 	d_st->width = 0;
 	d_st->precision = -1;
 	d_st->zero = 0;
-	d_st->str = NULL;
-	d_st->temp = NULL;
 	d_st->type = 0;
 	d_st->p = 0;
 	d_st->backPrint = 0;
@@ -79,6 +77,8 @@ int ft_printf(const char *fmt, ...)
 			if (*fmt == '\0')
 				break;
 			flags(&d_st, &fmt, vars);
+			if ((*fmt < 'a' || *fmt > 'z') && *fmt != 'X')
+				flags(&d_st, &fmt, vars);
 			type(&d_st, vars, &fmt);
 			if (d_st.type != 0)
 			{
@@ -102,8 +102,8 @@ int ft_printf(const char *fmt, ...)
 /*int	main(void)
 {
 	int e;
-//	e = ft_printf("0*%0*.10x*0--\n", 21, LONG_MIN);
-	e = ft_printf("%09s\n", "hi low");
+	e = ft_printf  (" --0*%0*.0x*0 0*%0*.10x*0--\n", -21, LONG_MAX, 21, LONG_MIN);
+//	e = ft_printf("%09s\n", "hi low");
 //		ft_printf("-00216 i  \n");
 //	  ft_printf("0000%%\n");
 //	  ft_printf("Numero de chars impressos = %d\n", e);

@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:45:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/20 19:34:05 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/21 19:04:53 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	counter(unsigned long long n, int base)
 {
 	int index;
 
+	if (n == 0)
+		return (1);
 	index = 0;
 	while (n > 0)
 	{
@@ -27,13 +29,13 @@ static int	counter(unsigned long long n, int base)
 
 void		convert(unsigned long long n, int base, p_lista *d_st)
 {
+	char *temp;
 	unsigned long long	nr;
 	int			index;
 	index = counter(n, base);
-	d_st->temp = (char *)malloc(sizeof(char) * (index + 1));
-	d_st->temp[index--] = '\0';
-	d_st->str = d_st->temp;
-	free (d_st->temp);
+	temp = (char *)malloc(sizeof(char) * (index + 1));
+	temp[index--] = '\0';
+	d_st->str = temp;
 	nr = n;
 	if (n == 0)
 		d_st->str[0] = '0';
@@ -51,6 +53,7 @@ void		convert(unsigned long long n, int base, p_lista *d_st)
 		nr = nr / base;
 		index--;
 	}
+	free (temp);
 }
 void tolower1(char *s, p_lista *d_st)
 {
