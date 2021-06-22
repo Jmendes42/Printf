@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:45:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/21 19:04:53 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/22 16:44:52 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	counter(unsigned long long n, int base)
 	return (index);
 }
 
-void		convert(unsigned long long n, int base, p_lista *d_st)
+char	*convert(unsigned long long n, int base, p_lista *d_st)
 {
 	char *temp;
 	unsigned long long	nr;
@@ -35,25 +35,24 @@ void		convert(unsigned long long n, int base, p_lista *d_st)
 	index = counter(n, base);
 	temp = (char *)malloc(sizeof(char) * (index + 1));
 	temp[index--] = '\0';
-	d_st->str = temp;
 	nr = n;
 	if (n == 0)
-		d_st->str[0] = '0';
+		temp[0] = '0';
 	while (nr > 0)
 	{
 		if ((nr % base) < 10)
 		{
-			d_st->str[index] = nr % base + '0';
+			temp[index] = nr % base + '0';
 		}
 		else
 		{
-			d_st->str[index] = nr % base + 55;
+			temp[index] = nr % base + 55;
 
 		}
 		nr = nr / base;
 		index--;
 	}
-	free (temp);
+	return(temp);
 }
 void tolower1(char *s, p_lista *d_st)
 {
@@ -73,7 +72,7 @@ void    printp(p_lista *d_st, unsigned long long n)
 
 	control = 0;
 	d_st->p += 1;
-	convert(n, 16, d_st);
+	d_st->str = convert(n, 16, d_st);
 	if (!n && d_st->precision == 0) 
 		d_st->str[0] = '\0';
 	if (d_st->precision > 0 && d_st->width < d_st->precision)
@@ -98,6 +97,7 @@ void    printp(p_lista *d_st, unsigned long long n)
 		d_st->c += write(1, "0x", 2);
 		tolower1(d_st->str, d_st);
 	}
+	free(d_st->str);
 }
 
 void precision_unsigned(int precision, int len, p_lista *d_st)

@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/21 19:11:50 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/22 17:31:35 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 	char *str;
 
 	control = 0;
-	convert(d, base, d_st);
+	d_st->str = convert(d, base, d_st);
 	if (lower == 1)
 		tolower1(d_st->str, d_st);
 	if (d_st->str[0] == '0' && d_st->str[1] == '2')
@@ -122,4 +122,5 @@ void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 		precision_unsigned(d_st->zero, len, d_st);
 	if (d_st->align < 2)
 		 d_st->c += ft_putstr_fd(d_st->str);
+	free (d_st->str);
 }

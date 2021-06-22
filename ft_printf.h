@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:06:01 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/21 19:05:38 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/22 15:59:29 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		flags(p_lista *d_st, const char **fmt, va_list vars);
 void	printc(p_lista *d_st, char c);
 void	prints(p_lista *d_st, char *c);
 void	printp(p_lista *d_st, unsigned long long n);
-void        convert(unsigned long long n, int base, p_lista *d_st);
+char       *convert(unsigned long long n, int base, p_lista *d_st);
 void    printx(p_lista *d_st, unsigned long long i, int base, int lower);
 void    printx0(p_lista *d_st, int len);
 void    printx1(p_lista *d_st, int len);

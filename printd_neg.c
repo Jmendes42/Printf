@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:02 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/16 20:45:39 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/22 18:25:54 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	width1(p_lista *d_st, int d, int len)
 		if (d_st->align > 0)
 		{
 			ft_putnbr_fd(d);
-			d_st->align++;
+			d_st->align = 2;
 		}
 		if (d_st->precision == len)
 		{

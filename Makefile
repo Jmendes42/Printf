@@ -6,7 +6,7 @@
 #    By: jmendes <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 16:37:43 by jmendes           #+#    #+#              #
-#    Updated: 2021/06/16 16:15:15 by jmendes          ###   ########.fr        #
+#    Updated: 2021/06/22 15:42:11 by jmendes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ INCLUDE = ft_printf.h
 
 SRC = flags.c\
 	  		width_precision.c\
+			ft_strdup.c\
 			ft_printf.c\
 			printers.c\
 			printd_pos.c\
