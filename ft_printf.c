@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/22 19:10:15 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/23 17:19:46 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,16 @@ int ft_printf(const char *fmt, ...)
 	return (d_st.c);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int e;
-	e = ft_printf  ("%.*d", 3, -12);
+	e = ft_printf  ("%0*.*d", -2, -2, 0);
 //	e = ft_printf("%09s\n", "hi low");
 //		ft_printf("-00216 i  \n");
 //	  ft_printf("0000%%\n");
 //	  ft_printf("Numero de chars impressos = %d\n", e);
 	return (0);
-}
+}*/
 //print1.c width_precision -> verificar incrementos
 
 

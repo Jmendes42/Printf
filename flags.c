@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:35:37 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/21 16:42:58 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/23 17:22:16 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ static void ast1(p_lista *d_st, int d)
 	if (d < 0)
 	{
 		d_st->zero *= -1;
-		d_st->align++;
+		d_st->align = 1;
 	}
 
 }
 static void ast0(p_lista *d_st, int d)
 {
 	d_st->precision = d;
-
 }
 static void ast(p_lista *d_st, int d)
 {
@@ -32,7 +31,7 @@ static void ast(p_lista *d_st, int d)
 	if (d_st->width < 0)
 	{
 		d_st->width *= -1;
-		d_st->align++;
+		d_st->align = 1;
 	}
 }
 

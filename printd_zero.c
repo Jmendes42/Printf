@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:41:29 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/22 18:37:52 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/23 17:21:58 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,25 @@ static void	printd_zero(p_lista *d_st)
 		width(d_st->zero, 1, d_st);
 	}
 	else if (d_st->precision == 0 && d_st->width > 0)
+	{
 		width (d_st->width, d_st->precision, d_st);
+	}
 	else if (d_st->precision == 0 && d_st->zero != 0)
+	{
 		width(d_st->zero, 0, d_st);
+	}
 	else if (d_st->precision == 0)
+	{
 		 return ;
+	}
 	else if (d_st->precision > 0)
+	{
 		zero_pre(d_st);
+	}
 	else
+	{
 		zero_pre1(d_st);
+	}
 }
 
 void	pre_printd(p_lista *d_st, int d)

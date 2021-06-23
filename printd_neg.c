@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:02 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/22 18:25:54 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/23 16:59:19 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	printd_neg(p_lista *d_st, int d, int num, int len)
 	{
 		pre_zero(d_st, d, len);
 	}
-	else if (d_st->precision > len && d_st->precision >= d_st->width)
+	else if (d_st->precision >= len && d_st->precision >= d_st->width)
 	{
 		 
 		precision(d_st->precision, len - 1, d_st, 1);
