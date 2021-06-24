@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:02 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/23 16:59:19 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/24 11:39:24 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ static void	width1(p_lista *d_st, int d, int len)
 
 static void	pre_zero(p_lista *d_st, int d, int len)
 {
+	int control;
+
+	control = 1;
 	if (d_st->precision < len)
 		d_st->precision = len;
 	else
@@ -100,8 +103,9 @@ static void	pre_zero(p_lista *d_st, int d, int len)
 	}
 	else
 	{
-		 
-		precision(d_st->precision, len, d_st, 1);
+		if (d == -2147483648)
+			control = 0;
+		precision(d_st->precision, len, d_st, control);
 		ft_putnbr_fd(d * -1);
 		width(d_st->zero, d_st->precision, d_st);
 		d_st->align++;
