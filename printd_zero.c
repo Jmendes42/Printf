@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:41:29 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/24 14:57:32 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:01:47 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ static void	zero_pre(p_lista *d_st)
 
 static void	zero_pre1(p_lista *d_st)
 {
-	ft_putchar_fd('X');
-	if (d_st->precision < -1)
-		d_st->precision *= -1;
+	if (d_st->zero > 0 && d_st->precision < 0 && d_st->align == 0)
+	{
+		precision(d_st->zero, 0, d_st, 0);
+		return ;
+	}
 	if (d_st->zero == d_st->precision)
 	{
 		d_st->c += ft_putchar_fd('0');
@@ -48,6 +50,8 @@ static void	zero_pre1(p_lista *d_st)
 	}
 	else
 	{
+		if (d_st->zero > 0 && d_st->width == 0)
+			d_st->width = d_st->zero;
 		d_st->c += ft_putchar_fd('0');
 		width(d_st->width, 1, d_st);
 	}

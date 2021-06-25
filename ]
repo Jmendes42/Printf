@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:35:37 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/25 18:12:14 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/25 17:30:59 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,14 @@ static void ast(p_lista *d_st, int d)
 
 void flags(p_lista *d_st, const char **fmt, va_list vars)
 {
-	while ((char)**fmt == '0' || (char)**fmt == '-')
-	{
-	while ((char)**fmt == '-')
+		ft_putchar_fd('X');
+	if ((char)**fmt == '-')
 	{
 		d_st->align = 1;
 		(*fmt)++;
 	}
 	if ((char)**fmt == '0')
 	{
-		while((char)**fmt == '0')
 		(*fmt)++;
 		while ((char)**fmt >= '0' && (char)**fmt <= '9')
 		{
@@ -59,7 +57,6 @@ void flags(p_lista *d_st, const char **fmt, va_list vars)
 			ast1(d_st, va_arg(vars, int));
 			(*fmt)++;
 		}
-	}
 	}
 
 	if ((char)**fmt == '-')

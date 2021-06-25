@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/22 17:31:35 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/25 18:44:05 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,30 +90,36 @@ void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 	char *str;
 
 	control = 0;
-	d_st->str = convert(d, base, d_st);
+		d_st->str = convert(d, base, d_st);
 	if (lower == 1)
 		tolower1(d_st->str, d_st);
+	len = ft_strlen(d_st->str);
 	if (d_st->str[0] == '0' && d_st->str[1] == '2')
 		d_st->str[0] = '\0';
-	len = ft_strlen(d_st->str);
 	if (d == 0 && d_st->precision == 0 )
 	{
-		d_st->str[0] = '\0';
-		if (d_st->width > d_st->precision && d_st->precision == 0)
+		if (d_st->zero > 0)
+		{
+			width(d_st->zero, 0, d_st);
+			return ;
+		}
+		else if (d_st->width > d_st->precision && d_st->precision == 0)
+		{
 			width(d_st->width + 1, len, d_st);
+		}
 		else if (d_st->width > d_st->precision)
 		{
 			width(d_st->width, len, d_st);
 			if (d_st->width > 2)
 				len++;
 		}
-		else if (d_st->align == 0)
-			d_st->zero++;
 		control += 1;
 	}
 	if (d_st->precision >= 0 && d_st->zero > d_st->precision
 		&& d_st->zero > len)
+	{
 		zero_u(d, d_st, len);
+	}
 	else if (d_st->precision > len && d_st->precision >= d_st->width)
 		precision_unsigned(d_st->precision, len, d_st);
 	else if (d_st->width > len && d_st->width > d_st->precision && control == 0)
