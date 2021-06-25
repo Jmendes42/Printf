@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/25 18:40:34 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/25 18:49:59 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int ft_printf(const char *fmt, ...)
 //	  ft_printf("0000%%\n");
 //	  ft_printf("Numero de chars impressos = %d\n", e);
 	return (0);
-}i*/
+}*/
 //print1.c width_precision -> verificar incrementos
 
 

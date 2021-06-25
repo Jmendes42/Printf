@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:20 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/25 18:44:05 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/25 18:53:23 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 		d_st->str[0] = '\0';
 	if (d == 0 && d_st->precision == 0 )
 	{
+		free (d_st->str);
+		d_st->str[0] = '\0';
 		if (d_st->zero > 0)
 		{
 			width(d_st->zero, 0, d_st);
@@ -128,5 +130,6 @@ void	printu(p_lista *d_st, unsigned int d, int base, int lower)
 		precision_unsigned(d_st->zero, len, d_st);
 	if (d_st->align < 2)
 		 d_st->c += ft_putstr_fd(d_st->str);
-	free (d_st->str);
+	if (d_st->str[0] != '\0')
+		free (d_st->str);
 }
