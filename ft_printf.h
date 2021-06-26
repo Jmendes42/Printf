@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:06:01 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/22 15:59:29 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/26 21:30:21 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	printd_pos(p_lista *d_st, int d, int num, int index);
 void    ft_putnbr_fd(int n);
 int	ft_putstr_fd(char *s);
 size_t	ft_strlen(const char *s);
-void		flags(p_lista *d_st, const char **fmt, va_list vars);
+int		flags(const char *fmt, int index, p_lista *d_st, va_list vars);
 void	printc(p_lista *d_st, char c);
 void	prints(p_lista *d_st, char *c);
 void	printp(p_lista *d_st, unsigned long long n);
@@ -58,6 +58,7 @@ void    printxx(p_lista *d_st, unsigned long long i);
 void    printu(p_lista *d_st, unsigned int d, int base, int lower);
 char    *ft_strdup(const char *s);
 void	tolower1(char *s, p_lista *d_st);
+void precision_char(int index, char *s, p_lista *d_st);
 /*void		ft_print_c(p_lista *d_st, char c);
 void		ft_print_s(p_lista *d_st, char *s);
 int	ft_type(const char *fmt, int index, p_lista *d_st,va_list vars);

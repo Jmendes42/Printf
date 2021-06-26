@@ -6,48 +6,55 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/25 18:49:59 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/26 21:02:12 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 #include <limits.h>
 
-void	backPrint(const char *fmt, p_lista *d_st)
+static int	backPrint(const char *fmt, int index, p_lista *d_st)
 {
-	d_st->backPrint += 1;
-	fmt--;
-	while (*fmt != '%')
+	int	index_0;
+
+	index_0 = index - 1;
+	while (fmt[index] != '%')
+		index--;
+	while (index < index_0)
 	{
-		d_st->c += write(1, &*fmt, 1);
-		fmt--;
+		d_st->c += write(1, &fmt[index], 1);
+		index++;
 	}
+	d_st->backPrint += 1;
+	return (index);
 }
 
-static void	type(p_lista *d_st, va_list vars, const char **fmt)
+static int	type(char fmt, int index, p_lista *d_st, va_list vars)
 {
-	if (**fmt == 'u')
+	if (fmt == 'u')
 		printu(d_st, va_arg(vars, unsigned int), 10, 0);
-	else if (**fmt == 'X')
+	else if (fmt == 'X')
 		printu(d_st, va_arg(vars, unsigned int), 16, 0);
-	else if (**fmt == 'x')
+	else if (fmt == 'x')
 		printu(d_st, va_arg(vars, unsigned int), 16, 1);
-	else if (**fmt == 'p')
+	else if (fmt == 'p')
 		printp(d_st, va_arg(vars, unsigned long long));
-	else if (**fmt == 's')
+	else if (fmt == 's')
 		prints(d_st, va_arg(vars, char *));
-	else if (**fmt == 'c')
+	else if (fmt == 'c')
+	{
 		printc(d_st, va_arg(vars, int));
-	else if (**fmt == 'd' || **fmt == 'i')
+	}
+	else if (fmt == 'd' || fmt == 'i')
 		pre_printd(d_st, va_arg(vars, int));
-	else if (**fmt == '%')
+	else if (fmt == '%')
 		printc(d_st, '%');
 	else
 		d_st->type += 1;
-	(*fmt)++;	
+	return (index + 1);
 }
 
-static void init_struct(p_lista *d_st)
+static void	init_struct(p_lista *d_st)
 {
 	d_st->align = 0;
 	d_st->width = 0;
@@ -58,40 +65,41 @@ static void init_struct(p_lista *d_st)
 	d_st->backPrint = 0;
 }
 
-int ft_printf(const char *fmt, ...)
+static int	mainLoop(const char *fmt, int index, p_lista *d_st, va_list vars)
 {
-	va_list vars;
-	int index;
-	struct d_st d_st;
+	index++;
+	if (fmt[index] == '\0')
+		return (index);
+	index = flags(fmt, index, d_st, vars);
+	index = type(fmt[index], index, d_st, vars);
+	if (d_st->type != 0)
+	{
+		index = backPrint(fmt, index, d_st);
+		return (index);
+	}
+	return (index);
+}
+
+int	ft_printf(const char *fmt, ...)
+{
+	va_list		vars;
+	int			index;
+	struct d_st	d_st;
 
 	d_st.c = 0;
 	index = 0;
 	init_struct(&d_st);
 	va_start(vars, fmt);
-
-	while (*fmt != '\0')
+	while (fmt)
 	{
-		if(*fmt == '%')
+		if (fmt[index] == '%')
+			index = mainLoop(fmt, index, &d_st, vars);
+		if (fmt[index] == '\0')
+			break ;
+		if (fmt[index] != '%')
 		{
-			fmt++;
-			if (*fmt == '\0')
-				break;
-			flags(&d_st, &fmt, vars);
-			if ((*fmt < 'a' || *fmt > 'z') && *fmt != 'X')
-				flags(&d_st, &fmt, vars);
-			type(&d_st, vars, &fmt);
-			if (d_st.type != 0)
-			{
-				backPrint(fmt, &d_st);
-				break;
-			}
-		}
-		if (*fmt == '\0')
-			break;
-		if(*fmt != '%')
-		{
-			d_st.c += ft_putchar_fd(*fmt);
-			fmt++;
+			d_st.c += ft_putchar_fd(fmt[index]);
+			index++;
 		}
 		init_struct(&d_st);
 	}
@@ -102,7 +110,7 @@ int ft_printf(const char *fmt, ...)
 /*int	main(void)
 {
 	int e;
-	e = ft_printf  ("%09.0u\n", UINT_MAX + 1);
+	e = ft_printf  ("%5");
 //	e = ft_printf("%09s\n", "hi low");
 //		ft_printf("-00216 i  \n");
 //	  ft_printf("0000%%\n");
@@ -110,6 +118,4 @@ int ft_printf(const char *fmt, ...)
 	return (0);
 }*/
 //print1.c width_precision -> verificar incrementos
-
-
-//VERIFICAR:
+//VERIFICAR: flags-> recursiva
