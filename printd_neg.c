@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:03:02 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/26 22:01:31 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/26 22:08:22 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	pre_zero(p_lista *d_st, int d, int len)
 			precision(d_st->precision, len, d_st, 0);
 		if (d_st->align == 2)
 		{
-			precision(d_st->precision, len, d_st, 1);		
+			precision(d_st->precision, len, d_st, 1);
 			ft_putnbr_fd(d);
 		}
 	}
