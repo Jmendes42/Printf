@@ -6,7 +6,7 @@
 #    By: jmendes <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 16:37:43 by jmendes           #+#    #+#              #
-#    Updated: 2021/06/26 21:40:41 by jmendes          ###   ########.fr        #
+#    Updated: 2021/06/27 16:17:25 by jmendes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC = flags.c\
 			printd_pos.c\
 			printd_zero.c\
 			printd_neg.c\
+			printd_neg1.c\
 			printc.c\
 			prints.c\
 			printu.c\

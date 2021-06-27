@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:41:29 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/25 16:01:47 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 15:42:30 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	pre_printd(p_lista *d_st, int d)
 
 	index = 0;
 	num = d;
+
 	if (d_st->align > 1)
 		d_st->align = 1;
 	if (d < 0)

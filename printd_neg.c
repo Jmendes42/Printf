@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printd1.c                                          :+:      :+:    :+:   */
+/*   printd_neg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 15:03:02 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/26 22:08:22 by jmendes          ###   ########.fr       */
+/*   Created: 2021/06/27 16:17:45 by jmendes           #+#    #+#             */
+/*   Updated: 2021/06/27 16:20:28 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	width_precision(p_lista *d_st, int d, int len)
+/*static void	width_precision_neg(p_lista *d_st, int d, int len)
 {
 	if (d != -1 && d_st->align == 1)
 		d_st->precision++;
@@ -42,13 +42,13 @@ static void	width_precision(p_lista *d_st, int d, int len)
 		ft_putnbr_fd(d * -1);
 		d_st->align = 2;
 	}
-}
+}*/
 
 static void	width1(p_lista *d_st, int d, int len)
 {
 	if (d_st->precision >= len && d_st->width > d_st->precision)
 	{
-		width_precision(d_st, d, len);
+		width_precision_neg(d_st, d, len);
 	}
 	else
 	{	
@@ -103,21 +103,9 @@ static void	pre_zero(p_lista *d_st, int d, int len)
 	}
 }
 
-void	printd_neg(p_lista *d_st, int d, int num, int len)
+static void	print_neg1(int d, int len, p_lista *d_st)
 {
-	while (num > 0)
-	{
-		num = num / 10;
-		len++;
-	}
-	d_st->c += len;
-	if (d_st->zero > len && d_st->align == 1 && d_st->precision == -1)
-	{
-		ft_putnbr_fd(d);
-		width(d_st->zero, len, d_st);
-		d_st->align++;
-	}
-	else if (d_st->precision >= 0 && d_st->zero > d_st->precision)
+	if (d_st->precision >= 0 && d_st->zero > d_st->precision)
 		pre_zero(d_st, d, len);
 	else if (d_st->precision >= len && d_st->precision >= d_st->width)
 	{
@@ -133,4 +121,22 @@ void	printd_neg(p_lista *d_st, int d, int num, int len)
 	}
 	if (d_st->align != 2)
 		ft_putnbr_fd(d);
+}
+
+void	printd_neg(p_lista *d_st, int d, int num, int len)
+{
+	while (num > 0)
+	{
+		num = num / 10;
+		len++;
+	}
+	d_st->c += len;
+	if (d_st->zero > len && d_st->align == 1 && d_st->precision == -1)
+	{
+		ft_putnbr_fd(d);
+		width(d_st->zero, len, d_st);
+		d_st->align++;
+	}
+	else
+		print_neg1(d, len, d_st);
 }

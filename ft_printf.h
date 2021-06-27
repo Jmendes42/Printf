@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:06:01 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/26 21:30:21 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 16:21:10 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void    printu(p_lista *d_st, unsigned int d, int base, int lower);
 char    *ft_strdup(const char *s);
 void	tolower1(char *s, p_lista *d_st);
 void precision_char(int index, char *s, p_lista *d_st);
+void width_precision_neg(p_lista *d_st, int d, int len);
 /*void		ft_print_c(p_lista *d_st, char c);
 void		ft_print_s(p_lista *d_st, char *s);
 int	ft_type(const char *fmt, int index, p_lista *d_st,va_list vars);
