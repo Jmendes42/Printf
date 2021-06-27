@@ -6,43 +6,11 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 16:17:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 16:20:28 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 16:41:55 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*static void	width_precision_neg(p_lista *d_st, int d, int len)
-{
-	if (d != -1 && d_st->align == 1)
-		d_st->precision++;
-	d_st->width = d_st->width - d_st->precision;
-	if (d_st->align == 1)
-	{
-		if (d_st->precision == len)
-		{
-			len--;
-			d_st->width--;
-		}
-		if (d_st->width == 1)
-		{
-			precision(d_st->precision, len - 1, d_st, 1);
-			d_st->width = 0;
-		}
-		else
-			precision(d_st->precision, len, d_st, 1);
-		ft_putnbr_fd(d * -1);
-		d_st->align++;
-		width(d_st->width, 0, d_st);
-	}
-	else
-	{
-		width(d_st->width - 1, 0, d_st);
-		precision(d_st->precision, len - 1, d_st, 1);
-		ft_putnbr_fd(d * -1);
-		d_st->align = 2;
-	}
-}*/
 
 static void	width1(p_lista *d_st, int d, int len)
 {
@@ -67,6 +35,23 @@ static void	width1(p_lista *d_st, int d, int len)
 	}
 }
 
+static void	pre_zero1(int d, int len, p_lista *d_st)
+{
+	width(d_st->zero, d_st->precision, d_st);
+	if (d != -2147483648)
+	{
+		d_st->align = 2;
+		d *= -1;
+	}
+	if (d_st->align != 2)
+		precision(d_st->precision, len, d_st, 0);
+	if (d_st->align == 2)
+	{
+		precision(d_st->precision, len, d_st, 1);
+		ft_putnbr_fd(d);
+	}
+}
+
 static void	pre_zero(p_lista *d_st, int d, int len)
 {
 	int	control;
@@ -77,21 +62,7 @@ static void	pre_zero(p_lista *d_st, int d, int len)
 	else
 		d_st->precision++;
 	if (d_st->align == 0)
-	{
-		width(d_st->zero, d_st->precision, d_st);
-		if (d != -2147483648)
-		{
-			d_st->align = 2;
-			d *= -1;
-		}
-		if (d_st->align != 2)
-			precision(d_st->precision, len, d_st, 0);
-		if (d_st->align == 2)
-		{
-			precision(d_st->precision, len, d_st, 1);
-			ft_putnbr_fd(d);
-		}
-	}
+		pre_zero1(d, len, d_st);
 	else
 	{
 		if (d == -2147483648)

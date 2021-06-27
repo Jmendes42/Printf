@@ -6,7 +6,7 @@
 #    By: jmendes <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 16:37:43 by jmendes           #+#    #+#              #
-#    Updated: 2021/06/27 16:17:25 by jmendes          ###   ########.fr        #
+#    Updated: 2021/06/27 17:30:11 by jmendes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,7 @@ SRC = flags.c\
 			printc.c\
 			prints.c\
 			printu.c\
-			printx.c\
-			printx0.c\
-			printxx.c\
+			printu1.c\
 			convert.c\
 			
 OBJS = $(SRC:.c=.o)

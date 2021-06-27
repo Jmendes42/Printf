@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:06:01 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 16:21:10 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 17:31:15 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		flags(const char *fmt, int index, p_lista *d_st, va_list vars);
 void	printc(p_lista *d_st, char c);
 void	prints(p_lista *d_st, char *c);
 void	printp(p_lista *d_st, unsigned long long n);
-char       *convert(unsigned long long n, int base, p_lista *d_st);
+char       *convert(unsigned long long n, int base);
 void    printx(p_lista *d_st, unsigned long long i, int base, int lower);
 void    printx0(p_lista *d_st, int len);
 void    printx1(p_lista *d_st, int len);
@@ -60,6 +60,7 @@ char    *ft_strdup(const char *s);
 void	tolower1(char *s, p_lista *d_st);
 void precision_char(int index, char *s, p_lista *d_st);
 void width_precision_neg(p_lista *d_st, int d, int len);
+void    width_precision_u(p_lista *d_st, int len);
 /*void		ft_print_c(p_lista *d_st, char c);
 void		ft_print_s(p_lista *d_st, char *s);
 int	ft_type(const char *fmt, int index, p_lista *d_st,va_list vars);

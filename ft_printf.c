@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:30:06 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/26 21:02:12 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 17:24:35 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	ft_printf(const char *fmt, ...)
 /*int	main(void)
 {
 	int e;
-	e = ft_printf  ("%5");
+	e = ft_printf  ("%0*.*u", 2, 0, 0);
 //	e = ft_printf("%09s\n", "hi low");
 //		ft_printf("-00216 i  \n");
 //	  ft_printf("0000%%\n");
