@@ -6,33 +6,33 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:58:12 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/26 21:30:54 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 18:59:59 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    precision(int zero, int len, p_lista *d_st, int control)
+void	precision(int zero, int len, t_lista *s_st, int control)
 {
 	if (control == 1)
 		ft_putchar_fd('-');
-	if (d_st->precision == len)
+	if (s_st->precision == len)
 		return ;
 	while (zero > len++)
-		d_st->c += ft_putchar_fd('0');
+		s_st->c += ft_putchar_fd('0');
 }
 
-void    width(int space, int len, p_lista *d_st)
+void	width(int space, int len, t_lista *s_st)
 {
 	while (space-- > len)
-		d_st->c = d_st->c + ft_putchar_fd(' ');
+		s_st->c = s_st->c + ft_putchar_fd(' ');
 }
 
-void precision_char(int index, char *s, p_lista *d_st)
+void	precision_char(int index, char *s, t_lista *s_st)
 {
 	while (index-- > 0)
 	{
-		d_st->c += ft_putchar_fd(*s);
+		s_st->c += ft_putchar_fd(*s);
 		s++;
 	}
 }

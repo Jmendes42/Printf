@@ -6,7 +6,7 @@
 #    By: jmendes <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 16:37:43 by jmendes           #+#    #+#              #
-#    Updated: 2021/06/27 17:30:11 by jmendes          ###   ########.fr        #
+#    Updated: 2021/06/27 19:01:08 by jmendes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ INCLUDE = ft_printf.h
 
 SRC = flags.c\
 	  		width_precision.c\
-			ft_strdup.c\
 			ft_printf.c\
 			printers.c\
 			printd_pos.c\
@@ -31,6 +30,7 @@ SRC = flags.c\
 			printu.c\
 			printu1.c\
 			convert.c\
+			printp.c\
 			
 OBJS = $(SRC:.c=.o)
 

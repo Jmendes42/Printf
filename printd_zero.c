@@ -6,112 +6,112 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:41:29 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 16:49:10 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 18:57:00 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	zero_pre(p_lista *d_st)
+static void	zero_pre(t_lista *s_st)
 {
-	if (d_st->precision > 0)
+	if (s_st->precision > 0)
 	{
-		if (d_st->align == 0)
+		if (s_st->align == 0)
 		{
-			width (d_st->width, d_st->precision, d_st);
-			precision(d_st->precision, 0, d_st, 0);
+			width (s_st->width, s_st->precision, s_st);
+			precision(s_st->precision, 0, s_st, 0);
 		}
 		else
 		{
-			precision(d_st->precision, 0, d_st, 0);
-			width (d_st->width, d_st->precision, d_st);
+			precision(s_st->precision, 0, s_st, 0);
+			width (s_st->width, s_st->precision, s_st);
 		}
 	}
 }
 
-static void	zero_pre1(p_lista *d_st)
+static void	zero_pre1(t_lista *s_st)
 {
-	if (d_st->zero > 0 && d_st->precision < 0 && d_st->align == 0)
+	if (s_st->zero > 0 && s_st->precision < 0 && s_st->align == 0)
 	{
-		precision(d_st->zero, 0, d_st, 0);
+		precision(s_st->zero, 0, s_st, 0);
 		return ;
 	}
-	if (d_st->zero == d_st->precision)
+	if (s_st->zero == s_st->precision)
 	{
-		d_st->c += ft_putchar_fd('0');
-		width(d_st->precision, 1, d_st);
+		s_st->c += ft_putchar_fd('0');
+		width(s_st->precision, 1, s_st);
 		return ;
 	}
-	if (d_st->align == 0)
+	if (s_st->align == 0)
 	{
-		precision(d_st->zero, 1, d_st, 0);
-		width(d_st->width, 1, d_st);
-		d_st->c += ft_putchar_fd('0');
+		precision(s_st->zero, 1, s_st, 0);
+		width(s_st->width, 1, s_st);
+		s_st->c += ft_putchar_fd('0');
 	}
 	else
 	{
-		if (d_st->zero > 0 && d_st->width == 0)
-			d_st->width = d_st->zero;
-		d_st->c += ft_putchar_fd('0');
-		width(d_st->width, 1, d_st);
+		if (s_st->zero > 0 && s_st->width == 0)
+			s_st->width = s_st->zero;
+		s_st->c += ft_putchar_fd('0');
+		width(s_st->width, 1, s_st);
 	}
 }
 
-static void	precision_zero(p_lista *d_st)
+static void	precision_zero(t_lista *s_st)
 {
-	if (d_st->align == 0)
+	if (s_st->align == 0)
 	{
-		width (d_st->zero, d_st->precision, d_st);
-		precision(d_st->precision, 0, d_st, 0);
+		width (s_st->zero, s_st->precision, s_st);
+		precision(s_st->precision, 0, s_st, 0);
 	}
 	else
 	{
-		precision(d_st->precision, 0, d_st, 0);
-		width (d_st->zero, d_st->precision, d_st);
+		precision(s_st->precision, 0, s_st, 0);
+		width (s_st->zero, s_st->precision, s_st);
 	}
 }
 
-static void	printd_zero(p_lista *d_st)
+static void	printd_zero(t_lista *s_st)
 {		
-	if (d_st->precision > 0 && d_st->zero > d_st->precision)
-		precision_zero(d_st);
-	else if (d_st->zero > 0 && d_st->align == 1 && d_st->precision == -1)
+	if (s_st->precision > 0 && s_st->zero > s_st->precision)
+		precision_zero(s_st);
+	else if (s_st->zero > 0 && s_st->align == 1 && s_st->precision == -1)
 	{
-		d_st->c++;
+		s_st->c++;
 		ft_putnbr_fd(0);
-		width(d_st->zero, 1, d_st);
+		width(s_st->zero, 1, s_st);
 	}
-	else if (d_st->precision == 0 && d_st->width > 0)
-		width (d_st->width, d_st->precision, d_st);
-	else if (d_st->precision == 0 && d_st->zero != 0)
-		width(d_st->zero, 0, d_st);
-	else if (d_st->precision == 0)
+	else if (s_st->precision == 0 && s_st->width > 0)
+		width (s_st->width, s_st->precision, s_st);
+	else if (s_st->precision == 0 && s_st->zero != 0)
+		width(s_st->zero, 0, s_st);
+	else if (s_st->precision == 0)
 		 return ;
-	else if (d_st->precision > 0)
-		zero_pre(d_st);
+	else if (s_st->precision > 0)
+		zero_pre(s_st);
 	else
-		zero_pre1(d_st);
+		zero_pre1(s_st);
 }
 
-void	pre_printd(p_lista *d_st, int d)
+void	pre_printd(t_lista *s_st, int d)
 {
 	int	index;
 	int	num;
 
 	index = 0;
 	num = d;
-	if (d_st->align > 1)
-		d_st->align = 1;
+	if (s_st->align > 1)
+		s_st->align = 1;
 	if (d < 0)
 	{
 		if (num == -2147483648)
 			num = 2147483647;
 		else
 			num *= -1;
-		printd_neg(d_st, d, num, index + 1);
+		printd_neg(s_st, d, num, index + 1);
 	}
 	else if (d == 0)
-		printd_zero(d_st);
+		printd_zero(s_st);
 	else
-		printd_pos(d_st, d, num, index);
+		printd_pos(s_st, d, num, index);
 }

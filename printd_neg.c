@@ -6,108 +6,108 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 16:17:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 16:41:55 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 18:54:10 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	width1(p_lista *d_st, int d, int len)
+static void	width1(t_lista *s_st, int d, int len)
 {
-	if (d_st->precision >= len && d_st->width > d_st->precision)
+	if (s_st->precision >= len && s_st->width > s_st->precision)
 	{
-		width_precision_neg(d_st, d, len);
+		width_precision_neg(s_st, d, len);
 	}
 	else
 	{	
-		if (d_st->align > 0)
+		if (s_st->align > 0)
 		{
 			ft_putnbr_fd(d);
-			d_st->align = 2;
+			s_st->align = 2;
 		}
-		if (d_st->precision == len)
+		if (s_st->precision == len)
 		{
-			width(d_st->width, len + 1, d_st);
-			precision(d_st->precision, len - 1, d_st, 1);
+			width(s_st->width, len + 1, s_st);
+			precision(s_st->precision, len - 1, s_st, 1);
 		}
 		else
-			width(d_st->width, len, d_st);
+			width(s_st->width, len, s_st);
 	}
 }
 
-static void	pre_zero1(int d, int len, p_lista *d_st)
+static void	pre_zero1(int d, int len, t_lista *s_st)
 {
-	width(d_st->zero, d_st->precision, d_st);
+	width(s_st->zero, s_st->precision, s_st);
 	if (d != -2147483648)
 	{
-		d_st->align = 2;
+		s_st->align = 2;
 		d *= -1;
 	}
-	if (d_st->align != 2)
-		precision(d_st->precision, len, d_st, 0);
-	if (d_st->align == 2)
+	if (s_st->align != 2)
+		precision(s_st->precision, len, s_st, 0);
+	if (s_st->align == 2)
 	{
-		precision(d_st->precision, len, d_st, 1);
+		precision(s_st->precision, len, s_st, 1);
 		ft_putnbr_fd(d);
 	}
 }
 
-static void	pre_zero(p_lista *d_st, int d, int len)
+static void	pre_zero(t_lista *s_st, int d, int len)
 {
 	int	control;
 
 	control = 1;
-	if (d_st->precision < len)
-		d_st->precision = len;
+	if (s_st->precision < len)
+		s_st->precision = len;
 	else
-		d_st->precision++;
-	if (d_st->align == 0)
-		pre_zero1(d, len, d_st);
+		s_st->precision++;
+	if (s_st->align == 0)
+		pre_zero1(d, len, s_st);
 	else
 	{
 		if (d == -2147483648)
 			control = 0;
-		precision(d_st->precision, len, d_st, control);
+		precision(s_st->precision, len, s_st, control);
 		ft_putnbr_fd(d * -1);
-		width(d_st->zero, d_st->precision, d_st);
-		d_st->align++;
+		width(s_st->zero, s_st->precision, s_st);
+		s_st->align++;
 	}
 }
 
-static void	print_neg1(int d, int len, p_lista *d_st)
+static void	print_neg1(int d, int len, t_lista *s_st)
 {
-	if (d_st->precision >= 0 && d_st->zero > d_st->precision)
-		pre_zero(d_st, d, len);
-	else if (d_st->precision >= len && d_st->precision >= d_st->width)
+	if (s_st->precision >= 0 && s_st->zero > s_st->precision)
+		pre_zero(s_st, d, len);
+	else if (s_st->precision >= len && s_st->precision >= s_st->width)
 	{
-		precision(d_st->precision, len - 1, d_st, 1);
+		precision(s_st->precision, len - 1, s_st, 1);
 		d *= -1;
 	}
-	else if (d_st->width > d_st->precision && d_st->width > len)
-		width1(d_st, d, len);
-	else if (d_st->zero > len && d_st->align == 0 && d_st->precision < 0)
+	else if (s_st->width > s_st->precision && s_st->width > len)
+		width1(s_st, d, len);
+	else if (s_st->zero > len && s_st->align == 0 && s_st->precision < 0)
 	{
-		precision(d_st->zero, len, d_st, 1);
+		precision(s_st->zero, len, s_st, 1);
 		d *= -1;
 	}
-	if (d_st->align != 2)
+	if (s_st->align != 2)
 		ft_putnbr_fd(d);
 }
 
-void	printd_neg(p_lista *d_st, int d, int num, int len)
+void	printd_neg(t_lista *s_st, int d, int num, int len)
 {
 	while (num > 0)
 	{
 		num = num / 10;
 		len++;
 	}
-	d_st->c += len;
-	if (d_st->zero > len && d_st->align == 1 && d_st->precision == -1)
+	s_st->c += len;
+	if (s_st->zero > len && s_st->align == 1 && s_st->precision == -1)
 	{
 		ft_putnbr_fd(d);
-		width(d_st->zero, len, d_st);
-		d_st->align++;
+		width(s_st->zero, len, s_st);
+		s_st->align++;
 	}
 	else
-		print_neg1(d, len, d_st);
+		print_neg1(d, len, s_st);
 }

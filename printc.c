@@ -6,46 +6,46 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 16:12:38 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/26 21:41:40 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 18:53:24 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	printcWidth(char c, p_lista *d_st)
+void	printcWidth(char c, t_lista *s_st)
 {
-	if (d_st->align > 0)
+	if (s_st->align > 0)
 	{
-		d_st->c += ft_putchar_fd(c);
-		width(d_st->width, 1, d_st);
+		s_st->c += ft_putchar_fd(c);
+		width(s_st->width, 1, s_st);
 	}
 	else
 	{
-		width(d_st->width, 1, d_st);
-		d_st->c += ft_putchar_fd(c);
+		width(s_st->width, 1, s_st);
+		s_st->c += ft_putchar_fd(c);
 	}
 }
 
-void	printc(p_lista *d_st, char c)
+void	printc(t_lista *s_st, char c)
 {
-	if (c == '%' && d_st->zero > 0)
+	if (c == '%' && s_st->zero > 0)
 	{
-		if (d_st->align == 1)
+		if (s_st->align == 1)
 		{
-			d_st->c += ft_putchar_fd(c);
-			width(d_st->zero, 1, d_st);
-			d_st->align++;
+			s_st->c += ft_putchar_fd(c);
+			width(s_st->zero, 1, s_st);
+			s_st->align++;
 		}
 		else
-			precision_unsigned(d_st->zero, 1, d_st);
+			precision_unsigned(s_st->zero, 1, s_st);
 	}
-	if (d_st->width < 0)
+	if (s_st->width < 0)
 	{
-		d_st->align = 1;
-		d_st->width *= -1;
+		s_st->align = 1;
+		s_st->width *= -1;
 	}
-	if (d_st->width > 0)
-		printcWidth(c, d_st);
-	else if (d_st->align < 2)
-		d_st->c += ft_putchar_fd(c);
+	if (s_st->width > 0)
+		printcWidth(c, s_st);
+	else if (s_st->align < 2)
+		s_st->c += ft_putchar_fd(c);
 }

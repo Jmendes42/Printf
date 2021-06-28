@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 16:47:48 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/21 19:03:22 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/06/27 18:57:29 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t index;
+	size_t	index;
 
 	index = 0;
 	while (s[index])
@@ -53,5 +53,3 @@ void	ft_putnbr_fd(int n)
 		ft_putchar_fd((n % 10) + '0');
 	}
 }
-
-
