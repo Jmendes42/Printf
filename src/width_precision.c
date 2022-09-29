@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   width_precision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jmendes <jmendes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:58:12 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 18:59:59 by jmendes          ###   ########.fr       */
+/*   Updated: 2022/09/29 02:32:33 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 void	precision(int zero, int len, t_lista *s_st, int control)
 {

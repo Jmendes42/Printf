@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   printc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jmendes <jmendes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 16:12:38 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 18:53:24 by jmendes          ###   ########.fr       */
+/*   Updated: 2022/09/29 02:31:31 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 void	printcWidth(char c, t_lista *s_st)
 {

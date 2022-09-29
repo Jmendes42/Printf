@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   printd_zero.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jmendes <jmendes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 15:41:29 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 18:57:00 by jmendes          ###   ########.fr       */
+/*   Updated: 2022/09/29 02:32:03 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 static void	zero_pre(t_lista *s_st)
 {

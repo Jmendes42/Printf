@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jmendes <jmendes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 21:31:56 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 18:58:22 by jmendes          ###   ########.fr       */
+/*   Updated: 2022/09/29 02:32:20 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 static void	printsAlign1(char *s, t_lista *s_st)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   printd_neg1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jmendes <jmendes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 15:45:56 by jmendes           #+#    #+#             */
-/*   Updated: 2021/06/27 18:55:17 by jmendes          ###   ########.fr       */
+/*   Updated: 2022/09/29 02:31:57 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 static void	w_p_n(int d, int len, t_lista *s_st)
 {

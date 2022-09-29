@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmendes <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: jmendes <jmendes@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 16:37:43 by jmendes           #+#    #+#              #
-#    Updated: 2021/06/27 19:01:08 by jmendes          ###   ########.fr        #
+#    Updated: 2022/09/29 02:33:47 by jmendes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,10 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-NAME = libftprintf.a
-INCLUDE = ft_printf.h 
+NAME = printf
+INCLUDE = ./include/ft_printf.h 
 
-SRC = flags.c\
-	  		width_precision.c\
-			ft_printf.c\
-			printers.c\
-			printd_pos.c\
-			printd_zero.c\
-			printd_neg.c\
-			printd_neg1.c\
-			printc.c\
-			prints.c\
-			printu.c\
-			printu1.c\
-			convert.c\
-			printp.c\
+SRC = $(wildcard ./src/*.c)
 			
 OBJS = $(SRC:.c=.o)
 
